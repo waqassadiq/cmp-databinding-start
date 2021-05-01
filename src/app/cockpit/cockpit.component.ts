@@ -18,6 +18,15 @@ export class CockpitComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // using the logical reference from to set the server name here.
+  onAddServerWithLogicalReference(nameInput : HTMLInputElement) {
+    console.log(nameInput)
+    this.serverCreated.emit({
+      serverName: nameInput.value,
+      serverContent: this.newServerContent
+    });
+  }
+
   onAddServer() {
     this.serverCreated.emit({
       serverName: this.newServerName,
