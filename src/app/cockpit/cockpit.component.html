@@ -4,6 +4,12 @@
     <input type="text" class="form-control" [(ngModel)]="newServerName">
     <label>Server Name using local refernce</label>
     <input type="text" class="form-control" #serverNameInput>
+    <label>Server Name with @ViewChild</label>
+    <input 
+      type="text" 
+      class="form-control" 
+      #serverNameInputWithViewChild>
+
     <label>Server Content</label>
     <input type="text" class="form-control" [(ngModel)]="newServerContent">
     <br>
@@ -14,4 +20,6 @@
       class="btn btn-primary"
       (click)="onAddBlueprint()">Add Server Blueprint</button>
      <button class="btn btn-primary" (click)="onAddServerWithLogicalReference(serverNameInput)">Add Server name with Logical Reference></button> 
+
+     <button class="btn btn-primary" (click)="OnAddServerWithViewChild()">Server Name with ViewChild</button>
   </div>

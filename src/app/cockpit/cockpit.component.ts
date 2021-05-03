@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -13,9 +13,21 @@ export class CockpitComponent implements OnInit {
   newServerName = '';
   newServerContent = '';
 
+  @ViewChild("serverNameInputWithViewChild") serverNameInputElement;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+
+  OnAddServerWithViewChild(){
+    console.log("serverNameInputElement: " + this.serverNameInputElement);
+
+    this.serverCreated.emit({
+      serverName: this.serverNameInputElement.nativeElement.value,
+      serverContent: this.newServerContent
+    });
   }
 
   // using the logical reference from to set the server name here.
