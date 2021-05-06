@@ -24,4 +24,8 @@ export class AppComponent {
     });
   }
 
+  onChangeInitial(){
+    this.serverElements[0].name="Initial Name";
+  }
+
 }
