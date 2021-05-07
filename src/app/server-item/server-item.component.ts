@@ -5,11 +5,13 @@ import {
   AfterViewInit,
   Component, 
   DoCheck, 
+  ElementRef, 
   Input, 
   OnChanges, 
   OnDestroy, 
   OnInit, 
   SimpleChanges, 
+  ViewChild, 
   ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -28,8 +30,11 @@ AfterViewInit,
 AfterViewChecked,
 OnDestroy {
 
-  @Input("srvElement") element: {type: string, name: string, content: string};
+  @Input('srvElement') element: {type: string, name: string, content: string};
   @Input() name: String;
+
+  // prior to angular 8, static is not required
+  @ViewChild("heading", {static: true}) header: ElementRef;
 
   constructor() {
     console.log("constructor() called...");
@@ -43,6 +48,7 @@ OnDestroy {
 
   ngOnInit(): void {
     console.log("ngOnInit() called");
+    console.log("header content: " + this.header.nativeElement.textContent);
   }
 
   ngDoCheck(){
@@ -60,6 +66,8 @@ OnDestroy {
 
   ngAfterViewInit(){
     console.log("ngAfterViewInit() called.")
+    console.log("header content: " + this.header.nativeElement.textContent);
+
   }
   
   ngAfterViewChecked(){
