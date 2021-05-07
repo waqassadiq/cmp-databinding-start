@@ -4,6 +4,7 @@ import {
   AfterViewChecked,
   AfterViewInit,
   Component, 
+  ContentChild, 
   DoCheck, 
   ElementRef, 
   Input, 
@@ -35,6 +36,7 @@ OnDestroy {
 
   // prior to angular 8, static is not required
   @ViewChild("heading", {static: true}) header: ElementRef;
+  @ContentChild('paragraphContent', {static: true}) paragraph : ElementRef;
 
   constructor() {
     console.log("constructor() called...");
@@ -49,18 +51,23 @@ OnDestroy {
   ngOnInit(): void {
     console.log("ngOnInit() called");
     console.log("header content: " + this.header.nativeElement.textContent);
+    console.log("paragraph content: " + this.paragraph.nativeElement.textContent);
+
   }
 
   ngDoCheck(){
-    console.log("ngDoCheck() called")
+    console.log("ngDoCheck() called");
   }
 
+  ngCont
+
   ngAfterContentInit(){
-    console.log("ngAfterContentInit() called.")
+    console.log("ngAfterContentInit() called.");
+    console.log("paragraph content: " + this.paragraph.nativeElement.textContent);
   }
   
   ngAfterContentChecked(){
-    console.log("ngAfterContentChecked() called.")
+    console.log("ngAfterContentChecked() called.");
 
   }
 
