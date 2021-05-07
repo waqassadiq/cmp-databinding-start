@@ -28,4 +28,8 @@ export class AppComponent {
     this.serverElements[0].name="Initial Name";
   }
 
+  onDestroyFirst(){
+    this.serverElements.splice(0,1);
+  }
+
 }
